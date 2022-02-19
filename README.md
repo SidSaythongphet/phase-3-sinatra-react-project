@@ -1,5 +1,9 @@
 # Phase 3 Project Guidelines
 
+### Frontend Repo
+
+- [Frontend Repo ](https://github.com/SidSaythongphet/phase-3-project-clubhouse-app)
+
 ## Learning Goals
 
 - Build a web basic API with Sinatra and Active Record to support a React
