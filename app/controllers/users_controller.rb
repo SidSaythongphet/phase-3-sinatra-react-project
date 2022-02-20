@@ -14,12 +14,12 @@ class UsersController < ApplicationController
 # Read User Route
     get '/users' do
         @users = User.all
-        @users.to_json(include: [:clubs, :events])
+        @users.to_json(include: {clubs: { include:  :events } })
     end
 
     get '/users/:id' do
         find_user
-        @user.to_json(include: [:clubs, :events])
+        @user.to_json(include: {clubs: { include:  :events } })
     end
     
     private
