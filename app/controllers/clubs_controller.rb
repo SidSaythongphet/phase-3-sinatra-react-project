@@ -9,6 +9,7 @@ class ClubsController < ApplicationController
             admin: params[:admin]    
         )
         if club.save
+            user.clubs << club
             club.to_json
         end 
     end
