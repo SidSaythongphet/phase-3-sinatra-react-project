@@ -20,10 +20,20 @@ class ClubsController < ApplicationController
         @clubs.to_json(include: [:users, :events])
     end
 
-# Update Club Route
+    get '/clubs/:id' do
+        find_club
+        @club.to_json(include: [:users, :events])
+    end
+    
+    # Update Club Route
+    
+    
+    
+    # Delete Club Route
 
-
-
-# Delete Club Route
+    private
+    def find_club
+        @club = Club.find_by_id(params[:id])
+    end
 
 end
