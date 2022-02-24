@@ -13,16 +13,45 @@ class UsersController < ApplicationController
 
 # Read User Route
     get '/users' do
-        @users = User.all
-        @users.to_json(include: {clubs: { include:  :events } })
+        @user = User.all
+        @user.to_json(include: {clubs: { include:  :events } })
     end
 
     get '/users/:id' do
         find_user
         @user.to_json(include: {clubs: { include:  :events } })
     end
+
+    # get '/users_:username' do
+    #     @user = User.all.select do |user|
+    #         /user.username/i.match(params[:username])
+    #     end
+
+    #     binding.pry
+    #     @user.to_json(include: {clubs: { include:  :events } })
+    # end
+
     
-    private
+# Update User Route
+
+    patch '/users/:id' do
+        find_user
+        @user.update(
+            username: params[:username],
+            password: params[:password]
+        )
+        @user.to_json
+    end
+
+# Delete User Route
+
+    delete '/users/:id' do
+        find_user
+        @user.destroy
+        @user.to_json
+    end
+
+private
     
     def find_user
         @user = User.find_by_id(params[:id])
