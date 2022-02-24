@@ -25,6 +25,11 @@ class ClubsController < ApplicationController
         @club.to_json(include: [:users, :events])
     end
     
+    get '/users/:id/clubs' do
+        clubs = Club.joins(:users).where('users.id = ?', params[:id])
+        clubs.to_json(include: [:users, :events])
+    end
+
     # Update Club Route
     
     

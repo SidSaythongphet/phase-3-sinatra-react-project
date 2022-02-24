@@ -14,5 +14,6 @@ use Rack::JSONBodyParser
 # Our application
 use UsersController
 use ClubsController
+use UsersClubsController
 use EventsController
 run ApplicationController
