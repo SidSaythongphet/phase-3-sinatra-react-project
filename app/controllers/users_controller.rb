@@ -8,7 +8,7 @@ class UsersController < ApplicationController
             username: params[:username],
             password: params[:password],
         )
-        user.to_json
+        user.to_json(include: {clubs: { include:  :events } })
     end
 
 # Read User Route
@@ -21,15 +21,6 @@ class UsersController < ApplicationController
         find_user
         @user.to_json(include: {clubs: { include:  :events } })
     end
-
-    # get '/users_:username' do
-    #     @user = User.all.select do |user|
-    #         /user.username/i.match(params[:username])
-    #     end
-
-    #     binding.pry
-    #     @user.to_json(include: {clubs: { include:  :events } })
-    # end
 
     
 # Update User Route

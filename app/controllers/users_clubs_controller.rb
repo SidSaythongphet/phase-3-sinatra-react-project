@@ -30,7 +30,11 @@ class UsersClubsController < ApplicationController
         
         
     # Delete Route
-    
+        delete '/users_clubs/user_:user_id/club_:club_id' do
+            @user_club = UserClub.where(['user_id=? and club_id=?', params[:user_id], params[:club_id]])[0]
+            @user_club.destroy
+            @user_club.to_json(include: [:user, :club])
+        end
         
     private
 

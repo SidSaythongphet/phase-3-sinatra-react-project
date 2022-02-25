@@ -10,7 +10,7 @@ class ClubsController < ApplicationController
         )
         if club.save
             user.clubs << club
-            club.to_json
+            club.to_json(include: [:users, :events])
         end 
     end
 
@@ -22,7 +22,7 @@ class ClubsController < ApplicationController
 
     get '/clubs/:id' do
         find_club
-        @club.to_json(include: [:users, :events])
+        @club.to_json(include: [:users, :events, :posts])
     end
     
     get '/users/:id/clubs' do
