@@ -16,4 +16,5 @@ use UsersController
 use ClubsController
 use UsersClubsController
 use EventsController
+use PostsController
 run ApplicationController

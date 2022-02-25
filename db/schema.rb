@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_214646) do
+ActiveRecord::Schema.define(version: 2022_02_24_015911) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "club_title"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2022_02_19_214646) do
     t.string "event_title"
     t.integer "club_id"
     t.datetime "event_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
