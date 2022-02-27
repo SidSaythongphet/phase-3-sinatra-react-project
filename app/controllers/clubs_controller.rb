@@ -1,6 +1,6 @@
 class ClubsController < ApplicationController
 
-# Create Club Route
+# Create Club
     post '/clubs' do
         user = User.find_by_id(params[:admin])
         club = user.clubs.build(
@@ -14,27 +14,24 @@ class ClubsController < ApplicationController
         end 
     end
 
-# Read Clubs Route
+# Read Clubs Routes
+    # get all clubs
     get '/clubs' do
         @clubs = Club.all
         @clubs.to_json(include: [:users, :events])
     end
 
+    # get specific club
     get '/clubs/:id' do
         find_club
         @club.to_json(include: [:users, :events, :posts])
     end
-    
-    get '/users/:id/clubs' do
-        clubs = Club.joins(:users).where('users.id = ?', params[:id])
-        clubs.to_json(include: [:users, :events])
-    end
 
-    # Update Club Route
+# Update Club Route
+    # update club title/description
     
-    
-    
-    # Delete Club Route
+# Delete Club Route
+    # destroy club and associated tables
 
     private
     def find_club

@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
 
-# Create Event Route
-
+# Create Event
     post '/events' do
         club = Club.find_by_id(params[:club_id])
         event = club.events.build(
@@ -15,7 +14,7 @@ class EventsController < ApplicationController
     end
 
 
-# Read Events Route
+# Read Events Routes
     get '/events' do
         @events = Event.all
         @events.to_json(include: [:users, :events])
@@ -27,10 +26,9 @@ class EventsController < ApplicationController
     end
 
 # Update Event Route
-
-
+    # update date
 
 # Delete Event Route
-
+    # destroy event
 
 end

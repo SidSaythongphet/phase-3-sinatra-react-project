@@ -1,7 +1,6 @@
 class UsersClubsController < ApplicationController
 
-    # Create Route
-
+# Create Route
     post '/users_clubs' do
         join = UserClub.new(
             user_id: params[:user_id],
@@ -17,17 +16,12 @@ class UsersClubsController < ApplicationController
             end
         end
     end
-
     
     # Read Route
         get '/users_clubs' do
             @user_club = UserClub.all
             @user_club.to_json
         end
-        
-    # Update Route
-        
-        
         
     # Delete Route
         delete '/users_clubs/user_:user_id/club_:club_id' do
